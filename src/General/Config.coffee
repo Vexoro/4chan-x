@@ -64,6 +64,11 @@ Config =
         true
         'Expand comments that are too long to display on the index. Not applicable with JSON Navigation.'
       ]
+      'Remove Original Link': [
+        false
+        'Remove the original file link rather than hiding it. May cause incompatibilities with other scripts.'
+        1
+      ]
       'File Info Formatting': [
         true
         'Reformat the file information.'
