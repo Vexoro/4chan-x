@@ -9,7 +9,12 @@ QR =
 
     return if g.VIEW is 'archive'
 
-    @captcha = Captcha.v2
+    version = if Conf['Use Recaptcha v1']
+      noscript = Conf['Force Noscript Captcha'] or not $.hasClass doc, 'js-enabled'
+      if noscript then 'noscript' else 'v1'
+    else
+      'v2'
+    @captcha = Captcha[version]
 
     $.on d, '4chanXInitFinished', @initReady
 
@@ -133,7 +138,7 @@ QR =
         QR.hasFocus = d.activeElement and QR.nodes.el.contains(d.activeElement)
         QR.nodes.el.classList.toggle 'focus', QR.hasFocus
       # XXX Stop unwanted scrolling due to captcha.
-      if QR.captcha.isEnabled and !QR.captcha.noscript
+      if QR.captcha.isEnabled and QR.captcha is Captcha.v2 and !QR.captcha.noscript
         if QR.inCaptcha()
           QR.scrollY = window.scrollY
           $.on d, 'scroll', QR.scrollLock
@@ -657,7 +662,12 @@ QR =
           QR.status()
 
     cb = (response) ->
-      extra.form.append 'g-recaptcha-response', response if response?
+      if response?
+        if response.challenge?
+          extra.form.append 'recaptcha_challenge_field', response.challenge
+          extra.form.append 'recaptcha_response_field', response.response
+        else
+          extra.form.append 'g-recaptcha-response', response
       QR.req = $.ajax "https://sys.4chan.org/#{g.BOARD}/post", options, extra
       QR.req.progress = '...'
 

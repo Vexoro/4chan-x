@@ -1156,6 +1156,7 @@ input[name="Default Volume"] {
 #qr > form {
   max-height: calc(100vh - 75px);
   overflow-y: auto;
+  overflow-x: hidden;
 }
 #qrtab {
   border-radius: 3px 3px 0 0;
@@ -1229,7 +1230,24 @@ input.field.tripped:not(:hover):not(:focus) {
   top: 2px;
 }
 
-/* Captcha */
+/* Recaptcha v1 */
+.captcha-img {
+  margin: 0px;
+  text-align: center;
+  background-image: #fff;
+  font-size: 0px;
+  min-height: 59px;
+  min-width: 302px;
+}
+.captcha-input {
+  width: 100%;
+  margin: 1px 0 0;
+}
+#qr.captcha-v1 #qr-captcha-iframe {
+  display: none;
+}
+
+/* Recaptcha v2 */
 #qr .captcha-root {
   position: relative;
 }
@@ -1253,7 +1271,7 @@ input.field.tripped:not(:hover):not(:focus) {
   display: block;
   width: 100%;
 }
-#qr-captcha-iframe {
+#qr.captcha-v2 #qr-captcha-iframe {
   width: 302px;
   height: 423px;
   border: 0;
@@ -1852,6 +1870,6 @@ grunt.file.expand('src/General/img/links/*.png').map(function(file) {
   width: 4em;
 }
 :root.gallery-open.fixed #header-bar:not(.autohide),
-:root.gallery-open.fixed #header-bar:not(.autohide) .fa::before {
+:root.gallery-open.fixed #header-bar:not(.autohide) #shortcuts .fa::before {
   visibility: hidden;
 }

@@ -8,6 +8,7 @@ Captcha.v2 =
     if @noscript = Conf['Force Noscript Captcha'] or not $.hasClass doc, 'js-enabled'
       @conn = new Connection null, "#{location.protocol}//www.google.com",
         token: (token) => @save true, token
+      $.addClass QR.nodes.el, 'noscript-captcha'
 
     @captchas = []
     $.get 'captchas', [], ({captchas}) ->
@@ -21,7 +22,7 @@ Captcha.v2 =
     counter   = $ '.captcha-counter > a', root
     @nodes = {root, counter}
     @count()
-    $.addClass QR.nodes.el, 'has-captcha'
+    $.addClass QR.nodes.el, 'has-captcha', 'captcha-v2'
     $.after QR.nodes.com.parentNode, root
 
     $.on counter, 'click', @toggle.bind @
@@ -95,7 +96,7 @@ Captcha.v2 =
       id: 'qr-captcha-iframe'
       src: @noscriptURL()
     $.add @nodes.container, iframe
-    @conn.target = iframe.contentWindow
+    @conn.target = iframe
 
   setupJS: ->
     $.globalEval '''
@@ -175,7 +176,7 @@ Captcha.v2 =
     $.set 'captchas', @captchas
     @count()
 
-    focus = d.activeElement?.nodeName is 'IFRAME' and d.activeElement.src?[...38] is 'https://www.google.com/recaptcha/api2/'
+    focus = d.activeElement?.nodeName is 'IFRAME' and /https?:\/\/www\.google\.com\/recaptcha\//.test(d.activeElement.src)
     if @needed()
       if focus
         if QR.cooldown.auto or Conf['Post on Captcha Completion']

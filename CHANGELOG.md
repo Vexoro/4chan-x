@@ -4,6 +4,23 @@ The links to individual versions below are to copies of the script with the upda
 
 ## v1.11.0
 
+**v1.11.0.9** *(2015-06-21)* - [[Firefox](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.9/builds/4chan-X-noupdate.user.js "Firefox version")] [[Chromium](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.9/builds/4chan-X-noupdate.crx "Chromium version")]
+- Fix caching of v1 captchas.
+- Other minor bugfixes.
+
+**v1.11.0.8** *(2015-06-21)* - [[Firefox](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.8/builds/4chan-X-noupdate.user.js "Firefox version")] [[Chromium](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.8/builds/4chan-X-noupdate.crx "Chromium version")]
+- Support noscript version of Recaptcha v1.
+- Captcha-related bugfixes/improvements.
+
+**v1.11.0.7** *(2015-06-21)* - [[Firefox](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.7/builds/4chan-X-noupdate.user.js "Firefox version")] [[Chromium](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.7/builds/4chan-X-noupdate.crx "Chromium version")]
+- Add `Use Recaptcha v1` option to use the old text-based captchas in the Quick Reply.
+
+**v1.11.0.6** *(2015-06-20)* - [[Firefox](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.6/builds/4chan-X-noupdate.user.js "Firefox version")] [[Chromium](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.6/builds/4chan-X-noupdate.crx "Chromium version")]
+- Support toggling images in the captcha with the number keys (as arranged in the numpad) and the UIOJKLM,. keys.
+- Arrow key navigation now works in noscript captcha.
+- Various captcha-related improvements/bugfixes.
+- Support space bar, numbers in numpad, comma, and space in keybinds.
+
 **v1.11.0.5** *(2015-06-20)* - [[Firefox](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.5/builds/4chan-X-noupdate.user.js "Firefox version")] [[Chromium](https://raw.githubusercontent.com/ccd0/4chan-x/1.11.0.5/builds/4chan-X-noupdate.crx "Chromium version")]
 - Add `Captcha Language` setting in the `Advanced` panel.
 - Minor bugfixes.
